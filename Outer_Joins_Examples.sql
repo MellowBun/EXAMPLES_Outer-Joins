@@ -14,8 +14,9 @@ USE BowlingLeagueExample;
 --    (1 column, 1 row)
 -- #########################################################################
 
---SELECT * FROM
-
+--SELECT Tourney_Matches.MatchID FROM Tourney_Matches
+--LEFT JOIN Match_Games ON Tourney_Matches.MatchID = Match_Games.MatchID
+--WHERE Match_Games.MatchID IS NULL
 
 -- #########################################################################
 -- 3. List the names of all teams and the total number of games they 
@@ -24,8 +25,10 @@ USE BowlingLeagueExample;
 --    games. (2 columns, 10 rows)
 -- #########################################################################
 
-
-
+--SELECT TeamName, COUNT(WinningTeamID) AS NumWin FROM Match_Games
+--RIGHT JOIN Teams ON Match_Games.WinningTeamID = Teams.TeamID
+--GROUP BY TeamName
+--ORDER BY TeamName ASC
 
 -- #########################################################################
 -- 4. Find the IDs of all tournaments, the number of matches in 
@@ -36,7 +39,7 @@ USE BowlingLeagueExample;
 --    (3 columns, 20 rows)
 -- #########################################################################
 
-
+--SELECT * FROM Tourney_Matches
 
 
 USE RecipesExample;
@@ -45,6 +48,10 @@ USE RecipesExample;
 -- 5. List all ingredient names that are not used in any recipes. Sort
 --    alphabetically by ingredient name. (1 column, 20 rows)
 -- #########################################################################
+
+--SELECT * FROM Recipes
+--INNER JOIN Recipe_Ingredients ON Recipes.RecipeID = Recipe_Ingredients.RecipeID
+--RIGHT JOIN Ingredients ON Recipe_Ingredients.IngredientID = Ingredients.IngredientID
 
 
 
@@ -123,5 +130,6 @@ USE SchoolSchedulingExample;
 --    not been assigned a faculty member. Sort alphabetically by staff first name, then
 --    last name, then class ID, then subject code. (4 columns, 134 rows)
 -- #########################################################################################
+
 
 
